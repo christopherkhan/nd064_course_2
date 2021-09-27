@@ -1,0 +1,1 @@
+## Kafka consumer polls the kafka queue and processes messages in geolocations topic

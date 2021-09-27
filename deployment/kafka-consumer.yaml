@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+  name: kafka-consumer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: kafka-consumer
+  template:
+    metadata:
+      labels:
+        service: kafka-consumer
+    spec:
+      containers:
+      - image: cjkhan/kafka-consumer:v1
+        name: kafka-consumer
+        imagePullPolicy: Always
+      restartPolicy: Always

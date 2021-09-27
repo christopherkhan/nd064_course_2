@@ -1,0 +1,43 @@
+openapi: 3.0.0
+info:
+  description: Post location data for mobile users
+  version: "1.0.0"
+  title: Location Data API
+paths:
+  /geolocations:
+    post:
+      summary: Post mobile location data 
+      operationId: AddLocationItem
+      description: Add locaton item to database
+      responses:
+        '201':
+          description: Location Data item created
+        '400':
+          description: invalid input, object invalid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schema/LocationItem'
+components:
+  schemas:
+    LocationItem:
+      type: object
+      required:
+        - person_id
+        - latitude
+        - longitude
+        - creation_time
+      properties:
+        person_id:
+          type: number
+          example: 1
+        latitude:
+          type: string
+          example: "-45.6"
+        longitude:
+          type: string
+          example: "34.0"
+        creation_time: 
+          type: string
+          example: "2021-09-29 12:00:00.000000"

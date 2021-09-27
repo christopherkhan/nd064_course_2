@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>GRPC Test Client</h1>
+    <p>To test gRPC, use the grpc client that is in the 'grpc-client-frontend' pod:
+    <br>The client code is in the file client.py
+    <br>
+    <ul>
+    <li Open a shell on the pod running the grpc-client-frontend</li>
+         `kubectl exec -it "name of pod running grpc-client-frontend" sh`
+    <li>Change directory to /app </li>
+    <li>Run `python client.py` </li>
+    <li>Enter information as requestd: unique person id, latitude and longitude. Creation_time is automatically set to
+    current date and time. </li>
+    <li> Client will execute message request to grpc server. Response will be same message item and status code.</li>
+    </ul>
+    <br>Alternatively, you can use postman to post message to http://localhost:30008/geolocations REST API endpoint. 
+    <br>The API endpoint takes payload and uses gRPC client to execute request over gRPC to server.
+    <br>The code for this is in the service.py file
+    <br>
+    <br>Message format
+    <br>  {
+    <br>     "person_id": integer value
+    <br>     "latitude":  string value
+    <br>     "longitude: string value
+    <br>     "creation_time": "string value yyyy-mm-dd HH:MM:SS.ssssss"   
+    <br>  }
+    <br>
+    <br>The gRPC server is a Kafka producer, and will write location data into a Kafka topic named 'geolocations'
+    <br>Kafka consumer wll process messages in geolocations topic, and use the locations API endpoint to write location
+    <br>data to the database.
+</body>
+</html>

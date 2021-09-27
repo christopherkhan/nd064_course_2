@@ -1,0 +1,177 @@
+{
+	"info": {
+		"_postman_id": "29f404e5-c45e-424a-b51c-bc63f90db502",
+		"name": "UdaConnect",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all Persons",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"person_id\": 2,\r\n    \"longitude\": \"-71.104\",\r\n    \"latitude\": \"42.315\",\r\n    \"creation_time\": \"2021-09-25 14:52:03.104355\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:30001/api/persons",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "30001",
+					"path": [
+						"api",
+						"persons"
+					],
+					"query": [
+						{
+							"key": "latitude",
+							"value": "25EC0FDA19927D7C64240",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Person",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"first_name\":\"David\", \"last_name\":\"Bowie\", \"company_name\": \"Bowie Incorporated\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:30001/api/persons",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "30001",
+					"path": [
+						"api",
+						"persons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Person Connections",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:30001/api/persons/1/connection?start_date=2019-01-01&end_date=2021-12-30&distance=100",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "30001",
+					"path": [
+						"api",
+						"persons",
+						"1",
+						"connection"
+					],
+					"query": [
+						{
+							"key": "start_date",
+							"value": "2019-01-01"
+						},
+						{
+							"key": "end_date",
+							"value": "2021-12-30"
+						},
+						{
+							"key": "distance",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Location",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"person_id\": 2,\r\n    \"longitude\": \"-60.104\",\r\n    \"latitude\": \"60.315\",\r\n    \"creation_time\": \"2021-09-25 14:52:03.104355\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:30002/api/locations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "30002",
+					"path": [
+						"api",
+						"locations"
+					],
+					"query": [
+						{
+							"key": "latitude",
+							"value": "25EC0FDA19927D7C64240",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Location Data via GRPC",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"person_id\": 2,\r\n    \"longitude\": \"-20.5\",\r\n    \"latitude\": \"20.5\",\r\n    \"creation_time\": \"2021-09-25 14:52:03.104355\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:30008/geolocations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "30008",
+					"path": [
+						"geolocations"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

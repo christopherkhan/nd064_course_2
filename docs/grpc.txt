@@ -1,0 +1,29 @@
+How to make a grpc client request
+
+
+Method 1
+Use the grpc client.py file in the pod running grpc-client-frontend application
+a. use `kubetl get pods` to identify pod running  grpc-client-frontend
+b. open a command shell on the pod running the grpc-client-frontend
+       `kubectl exec -it <name-of-pod-running grpc-client-frontend> sh`
+c. change directory to /app
+d. run `python client.py`
+e. Enter information as requestd: unique person id, latitude and longitude. 
+   The Creation_time is automatically set to current date and time.
+
+f. Client will create message and execute message request over gRPC to server. 
+   Response will be same message item and status code.
+
+
+
+Method 2
+Use postman to make a POST request to http://grpc-client-frontend:30008/geolocations API endpoint.
+The API endoint uses message payload to execute request over gRPC to server.
+
+Message format
+{
+    "person_id": integer value,
+    "latitude": string value,
+    "longitude: string value,
+    "creation_time": string value in format yyyy-mm-dd HH:MM:SS.ssssss
+}
